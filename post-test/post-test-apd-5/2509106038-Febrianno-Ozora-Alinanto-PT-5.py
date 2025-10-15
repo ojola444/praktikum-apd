@@ -17,6 +17,7 @@ new_pass = ""
 admin = "admin"
 admin_pass = "admin34"
 
+
 modify_preset = ""
 input_user = ""
 username_input = ""
@@ -203,8 +204,8 @@ while True :
             #yang ini nambahin echo
             if edit1 == 1 :
                while True :
-                 print("preset yang tersedia slot atau terdapat cost sisa  :")
-    
+                 os.system('cls' if os.name == 'nt' else 'clear')
+                 
                  for index, preset in enumerate(list_preset):
                     if len(list_preset[index]) == 5 or sum(list_cost[index]) == 12:
                      continue
@@ -212,12 +213,12 @@ while True :
 
                  edit1 = int(input(f"pilih preset (tekan {len(list_preset) + 1} atau lebih sebanyak dua kali untuk keluar : )"))
     
-                 if stop_modify == 1:
+                 if stop_modify == 5:
                   print("opsi edit berhenti")
                   stop_modify = 0
                   break
                  
-                 elif edit1 > len(list_preset) :
+                 elif edit1 > len(list_preset) - 1 :
                   print("preset tidak ada")
                   stop_modify += 1
     
@@ -229,6 +230,19 @@ while True :
                     elif sum(list_cost[edit1]) == 12 :
                        print("penambahan echo tidak valid : cost penuh")
                     else :
+                       
+                       print("echo cost 4 : ")
+                       for index,cost4 in enumerate(echo4) :
+                           print(f"{index} : {cost4}")
+                       
+                       print("echo cost 3 : ")
+                       for index,cost3 in enumerate(echo3) :
+                           print(f"{index + len(echo4)} : {cost3}")
+                       
+                       print("echo cost 1 : ")
+                       for index,cost1 in enumerate(echo1) :
+                           print(f"{index + len(echo4 + echo3)} : {cost1}")
+                 
                        edit2 = int(input("pilih echo yang dimasukkan : "))
                        total_cost = sum(list_cost[edit1])
     
@@ -245,14 +259,14 @@ while True :
                           temporary_cost = 3
     
                        elif edit2 <= len(echo4 + echo3 + echo1) -  1:
-                          list_preset[edit1].append(echo3[edit2 - len(echo4 + echo3)])
+                          list_preset[edit1].append(echo1[edit2 - len(echo4 + echo3)])
                           list_cost[edit1].append(3)
                           total_cost += 3
                           temporary_cost = 3
     
                        else :
                           print("input salah")
-                       
+
                        if total_cost > 12 :
                           print("echo yang dimasukkan butuh cost lebih")
                           print("gagal menambahkan")
@@ -265,7 +279,8 @@ while True :
            #ini  mode edit 
             elif edit1 == 0 :
                while True :
-                 
+                 os.system('cls' if os.name == 'nt' else 'clear')
+
                  for index, preset in enumerate(list_preset):
                      print(f"preset ke {index} : {preset}")
     
@@ -371,9 +386,11 @@ while True :
               if edit2 == 0 :
                  list_preset.pop(edit1)
                  list_cost.pop(edit1)
+                 os.system('cls' if os.name == 'nt' else 'clear')
                  print("hapus preset berhasil")
 
               else :
+                 os.system('cls' if os.name == 'nt' else 'clear')
                  print("cancel penghapusan :")
     
         else :
@@ -416,6 +433,19 @@ while True :
           #opsi admin = nambahkan echo sesuai dengan cost
           if admin_input == 0 :
              while True :  
+               os.system('cls' if os.name == 'nt' else 'clear')
+               print("echo cost 4 : ")
+               for index,cost4 in enumerate(echo4) :
+                   print(f"{index} : {cost4}")
+               
+               print("echo cost 3 : ")
+               for index,cost3 in enumerate(echo3) :
+                   print(f"{index + len(echo4)} : {cost3}")
+               
+               print("echo cost 1 : ")
+               for index,cost1 in enumerate(echo1) :
+                  print(f"{index + len(echo4 + echo3)} : {cost1}")
+
                admin_input = int(input("tambah echo cost berapa? (tekan 5 untuk jika selesai) : "))
 
                if admin_input == 5 :
@@ -452,6 +482,7 @@ while True :
           #hapus echo 
           elif admin_input == 1 :
            while True :  
+            os.system('cls' if os.name == 'nt' else 'clear')
             if len(echo4) < 2 or len(echo3) < 2 or len(echo1) < 2 :
                print("opsi hapus berhenti")
                print("masing masing echo dgn cost berbeda setidaknya punya 1 echo")
@@ -497,6 +528,7 @@ while True :
       os.system('cls' if os.name == 'nt' else 'clear')
       break
   
+  os.system('cls' if os.name == 'nt' else 'clear')
   print("log out..")
   print("ketik out jika ingin keluar")
   username_input = input("masukkan nama :")  
